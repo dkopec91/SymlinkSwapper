@@ -1,0 +1,115 @@
+﻿<Window x:Class="SymlinkSwapper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:SymlinkSwapper.MVVM.ViewModel"
+        xmlns:local="clr-namespace:SymlinkSwapper"
+        mc:Ignorable="d"
+        Height="430" Width="400"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True"
+        FontFamily="Consolas"
+        FontSize="16"
+        Foreground="White"
+        Style="{StaticResource MainWindowTheme}"
+        Title="SymlinkSwapper">
+
+    <Window.Resources>
+        <Color x:Key="BaseBackground">#242424</Color>
+        <Color x:Key="Highlight">#444444</Color>
+        <SolidColorBrush x:Key="MainBackground">#242424</SolidColorBrush>
+    </Window.Resources>
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+
+    <Border Background="{StaticResource MainBackground}"
+            CornerRadius="20">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition/>
+                <RowDefinition Height="85"/>
+                <RowDefinition Height="35"/>
+            </Grid.RowDefinitions>
+            
+            <Border Width="400" Height="35" CornerRadius="20,20,0,0" >
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="{StaticResource Highlight}" Offset="0"/>
+                        <GradientStop Color="{StaticResource BaseBackground}" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding AppName}"
+                           Width="305"
+                           VerticalAlignment="Center"
+                           FontSize="16"
+                           Margin="20,0,0,0"/>
+
+                <Button x:Name="MinimizeButton"
+                        Content="–"
+                        Click="MinimizeButton_Click"
+                        Style="{StaticResource ButtonTheme}"/>
+
+                <Button x:Name="CloseButton" 
+                        Content="x"
+                        Click="CloseButton_Click"
+                        Style="{StaticResource ButtonTheme}"/>
+
+            </StackPanel>
+
+            <Border Width="400" Height="35" CornerRadius="0,0,20,20" Grid.Row="3" >
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,2">
+                        <GradientStop Color="{StaticResource BaseBackground}" Offset="0"/>
+                        <GradientStop Color="{StaticResource Highlight}" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+
+            <ContentControl Grid.Row="1"
+                            Margin="10 10 10 5"
+                            Content="{Binding CurrentView}"/>
+
+            <StackPanel Orientation="Vertical" Grid.Row="2">
+
+                <Border BorderBrush="Gray" Width="400" Height="2" BorderThickness="2"
+                        Opacity="0.1" />
+
+                <ToggleButton x:Name="StartStop"
+                              Margin="30,20,25,0"
+                              Height="50" Width="345"
+                              FontSize="35"
+                              Style="{StaticResource ToggleButtonTheme}"
+                              Content="{Binding StartStopButtonLabel}"/>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" Grid.Row="3">
+
+                <Button
+                    x:Name="InfoButton" 
+                    Content="🧾"
+                    Width="20"
+                    Margin="350,0"
+                    FontSize="14"
+                    HorizontalAlignment="Right"
+                    Style="{StaticResource ButtonTheme}"
+                    Command="{Binding ToggleAboutViewCommand}"/>
+
+            </StackPanel>
+        </Grid>
+
+    </Border>
+</Window>
