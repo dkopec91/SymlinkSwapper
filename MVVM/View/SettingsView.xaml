@@ -21,52 +21,39 @@
             <TextBox Text="{Binding SourceFolder}" Width="305" Margin="15,0,5,0"
                      Style="{StaticResource TextBoxTheme}"/>
             
-            <Border BorderThickness="1" BorderBrush="DarkGray" Height="25">
-                <Button x:Name="OpenSourceFolder" Content="📂" Margin="5,0"
-                    Style="{StaticResource ButtonTheme}" Command="{Binding SetSourcePathCommand}"/>
-            </Border>
+            <Button x:Name="OpenSourceFolder" Content="📂"
+                    Style="{StaticResource ButtonTheme}"
+                    Command="{Binding SetSourcePathCommand}"/>
         </StackPanel>
 
 
         <TextBlock Text="Target symlink" Margin="5,15,0,5" Foreground="{StaticResource FieldLabels}"/>
         <StackPanel Orientation="Horizontal">
-
             <TextBox Text="{Binding TargetSymlink}"
                      Width="305"
                      Margin="15,0,5,0"
                      Style="{StaticResource TextBoxTheme}"/>
             
-            <Border BorderThickness="1"
-                    BorderBrush="DarkGray"
-                    Height="25">
-                
-                <Button x:Name="OpenTargetSymlink"
-                        Content="📂"
-                        Margin="5,0"
-                        Style="{StaticResource ButtonTheme}" 
-                        Command="{Binding SetOutputPathCommand}"/>
-            </Border>
+            <Button x:Name="OpenTargetSymlink" Content="📂"
+                    Style="{StaticResource ButtonTheme}" 
+                    Command="{Binding SetOutputPathCommand}"/>        
         </StackPanel>
 
 
         <TextBlock Text="Delay [ms]" Margin="5,15,0,5" Foreground="{StaticResource FieldLabels}"/>
-        <StackPanel Orientation="Horizontal">
-            
-            <TextBox Text="{Binding Delay}" Width="265"
-                 Margin="15,0,5,0"
-                 Style="{StaticResource TextBoxTheme}"/>
+        <StackPanel Orientation="Horizontal">            
+            <TextBox Text="{Binding Delay}"
+                     Width="265"
+                     Margin="15,0,5,0"
+                     Style="{StaticResource TextBoxTheme}"/>
 
-            <Border BorderThickness="1" BorderBrush="DarkGray" Height="25">
-                <Button x:Name="DecreaseDelay" Content="-" Margin="5,0"
-                        Style="{StaticResource ButtonTheme}" 
-                        Command="{Binding DecreaseDelayCommand}"/>
-            </Border>
+            <Button x:Name="DecreaseDelay" Content="-"
+                    Style="{StaticResource ButtonTheme}" 
+                    Command="{Binding DecreaseDelayCommand}"/>
 
-            <Border BorderThickness="1" BorderBrush="DarkGray" Height="25" Margin="5,0,0,0">
-                <Button x:Name="IncreaseDelay" Content="+" Margin="5,0"
-                        Style="{StaticResource ButtonTheme}" 
-                        Command="{Binding IncreaseDelayCommand}"/>
-            </Border>
+            <Button x:Name="IncreaseDelay" Content="+"
+                    Style="{StaticResource ButtonTheme}" 
+                    Command="{Binding IncreaseDelayCommand}"/>
         </StackPanel>
 
 
@@ -75,7 +62,8 @@
                         Margin="15,0,12,0"
                         Height="25"
                         Content="Start with Windows"
-                        Style="{StaticResource ToggleButtonTheme}" />
+                        IsChecked="{Binding Autostart}"
+                        Style="{StaticResource ToggleButtonTheme}"/>
         
     </StackPanel>
 </UserControl>

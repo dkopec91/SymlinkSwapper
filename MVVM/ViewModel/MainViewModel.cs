@@ -2,9 +2,10 @@
 
 namespace SymlinkSwapper.MVVM.ViewModel
 {
-    internal class MainViewModel : Core.ObservableObject
+    internal class MainViewModel : ObservableObject
     {
         public SettingsViewModel SettingsVM { get; set; }
+
         public AboutViewModel AboutVM { get; set; }
 
         public RelayCommand ToggleAboutViewCommand => new(o => { CurrentView = CurrentView is SettingsViewModel ? AboutVM : SettingsVM; });
@@ -26,8 +27,6 @@ namespace SymlinkSwapper.MVVM.ViewModel
                 OnPropertyChanged();
             }
         }
-
-
 
         public MainViewModel()
         {

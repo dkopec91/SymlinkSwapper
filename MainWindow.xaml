@@ -51,20 +51,26 @@
                 </Border.Background>
             </Border>
 
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Height="25">
                 <TextBlock Text="{Binding AppName}"
-                           Width="305"
+                           Width="310"
                            VerticalAlignment="Center"
                            FontSize="16"
                            Margin="20,0,0,0"/>
 
                 <Button x:Name="MinimizeButton"
                         Content="–"
+                        Margin="5,0,0,0"
+                        Width="25"
+                        BorderBrush="Transparent"
                         Click="MinimizeButton_Click"
                         Style="{StaticResource ButtonTheme}"/>
 
                 <Button x:Name="CloseButton" 
                         Content="x"
+                        Margin="0"
+                        Width="25"
+                        BorderBrush="Transparent"
                         Click="CloseButton_Click"
                         Style="{StaticResource ButtonTheme}"/>
 
@@ -80,7 +86,8 @@
             </Border>
 
             <ContentControl Grid.Row="1"
-                            Margin="10 10 10 5"
+                            Margin="10,10,10,5"
+                            Focusable="False"
                             Content="{Binding CurrentView}"/>
 
             <StackPanel Orientation="Vertical" Grid.Row="2">
@@ -96,15 +103,14 @@
                               Content="{Binding StartStopButtonLabel}"/>
             </StackPanel>
             
-            <StackPanel Orientation="Horizontal" Grid.Row="3">
+            <StackPanel Orientation="Horizontal" Grid.Row="3" Height="30">
 
                 <Button
                     x:Name="InfoButton" 
                     Content="🧾"
-                    Width="20"
-                    Margin="350,0"
+                    Margin="345,0,0,2"
                     FontSize="14"
-                    HorizontalAlignment="Right"
+                    BorderBrush="Transparent"
                     Style="{StaticResource ButtonTheme}"
                     Command="{Binding ToggleAboutViewCommand}"/>
 
