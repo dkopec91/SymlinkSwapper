@@ -15,8 +15,9 @@
         FontSize="16"
         Foreground="White"
         Style="{StaticResource MainWindowTheme}"
+        Closing="OnClose"  IsVisibleChanged="OnIsVisibleChanged"
         Title="SymlinkSwapper">
-
+    
     <Window.Resources>
         <Color x:Key="BaseBackground">#242424</Color>
         <Color x:Key="Highlight">#444444</Color>
