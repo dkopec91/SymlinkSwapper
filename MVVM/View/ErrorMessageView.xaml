@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="SymlinkSwapper.MVVM.View.ErrorMessageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SymlinkSwapper.MVVM.View"
+             xmlns:viewModel="clr-namespace:SymlinkSwapper.MVVM.ViewModel" d:DataContext="{d:DesignInstance Type=viewModel:ErrorMessageViewModel}"
+             mc:Ignorable="d"  BorderThickness="0" d:Background="#343434"
+             d:DesignHeight="280" d:DesignWidth="400">
+
+    <Border Background="#141414"
+            BorderThickness="1"
+            BorderBrush="DarkGray"
+            CornerRadius="10" Margin="20 10 15 10">
+
+        <Grid Margin="10 5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Height="1"
+                    BorderThickness="1"
+                    BorderBrush="DarkGray"
+                    Margin="-10 40 -10 0"/>
+
+            <Label Grid.Row="0"
+                   Grid.Column="0"
+                   Margin="0"
+                   FontSize="26"
+                   Foreground="Red"
+                   Content="Error"/>
+
+            <Button Grid.Row="0"
+                    Grid.Column="1"
+                    Margin="0 -3 0 0"
+                    FontSize="22"
+                    Foreground="Red"
+                    Content="❌"
+                    BorderThickness="0"
+                    Command="{Binding CloseErrorMessage}"
+                    Style="{StaticResource ButtonTheme}"/>
+
+            <TextBox Grid.Row="1"
+                     Grid.Column="0"
+                     Grid.ColumnSpan="2"
+                     Margin="0 5 0 0"
+                     Padding="5"
+                     Width="Auto"
+                     Height="Auto"
+                     BorderThickness="0"
+                     FontSize="14"
+                     IsReadOnly="True"
+                     TextWrapping="Wrap"
+                     Text="{Binding ErrorMessage}"
+                     Style="{StaticResource TextBoxTheme}">
+            </TextBox>
+
+        </Grid>
+    </Border>
+</UserControl>

@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
     <Authors>dkopec91</Authors>
     <ApplicationIcon>AppIcon.ico</ApplicationIcon>
     <Win32Resource />
@@ -16,10 +17,6 @@
 
   <ItemGroup>
     <Folder Include="MVVM\Model\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Ookii.Dialogs.Wpf" Version="3.1.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,9 +40,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Licences\ookii-dialogs-wpf.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

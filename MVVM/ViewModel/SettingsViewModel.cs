@@ -1,8 +1,8 @@
-﻿using Ookii.Dialogs.Wpf;
-using SymlinkSwapper.Core;
+﻿using SymlinkSwapper.Core;
 using SymlinkSwapper.Properties;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Windows.Forms;
 
 namespace SymlinkSwapper.MVVM.ViewModel
 {
@@ -14,19 +14,21 @@ namespace SymlinkSwapper.MVVM.ViewModel
 
         public RelayCommand SetSourcePathCommand => new(o =>
         {
-            VistaFolderBrowserDialog openFolderDialog = new();
-            if (openFolderDialog.ShowDialog() == true)
+            using FolderBrowserDialog dialog = new();
+
+            if (dialog.ShowDialog() == DialogResult.OK)
             {
-                SourceFolder = openFolderDialog.SelectedPath;
+                SourceFolder = dialog.SelectedPath;
             }
         });
 
         public RelayCommand SetOutputPathCommand => new(o =>
         {
-            VistaOpenFileDialog openFileDialog = new();
-            if (openFileDialog.ShowDialog() == true)
+            using SaveFileDialog saveFileDialog = new();
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                TargetSymlink = openFileDialog.FileName;
+                TargetSymlink = saveFileDialog.FileName;
             }
         });
 
@@ -42,7 +44,7 @@ namespace SymlinkSwapper.MVVM.ViewModel
                 _sourceFolder = value;
                 _appSettings.SourceFolder = _sourceFolder;
                 SaveSettings();
-                OnPropertyChanged();
+                NotifyPropertyChanged();
             }
         }
 
@@ -56,7 +58,7 @@ namespace SymlinkSwapper.MVVM.ViewModel
                 _targetSymlink = value;
                 _appSettings.TargetSymlink = _targetSymlink;
                 SaveSettings();
-                OnPropertyChanged();
+                NotifyPropertyChanged();
             }
         }
 
@@ -71,7 +73,7 @@ namespace SymlinkSwapper.MVVM.ViewModel
                 _delay = value;
                 _appSettings.Delay = _delay;
                 SaveSettings();
-                OnPropertyChanged();
+                NotifyPropertyChanged();
             }
         }
 
@@ -85,7 +87,7 @@ namespace SymlinkSwapper.MVVM.ViewModel
                 _autostart = value;
                 _appSettings.Autostart = _autostart;
                 SaveSettings();
-                OnPropertyChanged();
+                NotifyPropertyChanged();
             }
         }
 

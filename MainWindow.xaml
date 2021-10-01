@@ -17,7 +17,7 @@
         Style="{StaticResource MainWindowTheme}"
         Closing="OnClose"  IsVisibleChanged="OnIsVisibleChanged"
         Title="SymlinkSwapper">
-    
+
     <Window.Resources>
         <Color x:Key="BaseBackground">#242424</Color>
         <Color x:Key="Highlight">#444444</Color>
@@ -42,7 +42,7 @@
                 <RowDefinition Height="85"/>
                 <RowDefinition Height="35"/>
             </Grid.RowDefinitions>
-            
+
             <Border Width="400" Height="35" CornerRadius="20,20,0,0" >
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
@@ -100,10 +100,12 @@
                               Margin="30,20,25,0"
                               Height="50" Width="345"
                               FontSize="35"
+                              IsChecked="{Binding WorkerRunning, Mode=OneWay}"
+                              Command="{Binding StartStopWorkerCommand}"
                               Style="{StaticResource ToggleButtonTheme}"
-                              Content="{Binding StartStopButtonLabel}"/>
+                              Content="▶"/>
             </StackPanel>
-            
+
             <StackPanel Orientation="Horizontal" Grid.Row="3" Height="30">
 
                 <Button

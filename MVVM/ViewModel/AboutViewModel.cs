@@ -5,7 +5,7 @@ namespace SymlinkSwapper.MVVM.ViewModel
     internal class AboutViewModel : ObservableObject
     {
 
-        public string AppVersion => $"v. {typeof(MainViewModel).Assembly.GetName().Version}";
+        public static string AppVersion => $"v. {typeof(MainViewModel).Assembly.GetName().Version}";
 
         public static string AppName => typeof(MainViewModel).Assembly.GetName().Name;
 
