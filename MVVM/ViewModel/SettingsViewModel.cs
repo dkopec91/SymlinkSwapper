@@ -1,7 +1,7 @@
 ﻿using SymlinkSwapper.Core;
+using SymlinkSwapper.Logic;
 using SymlinkSwapper.Properties;
 using System;
-using System.ComponentModel.DataAnnotations;
 using System.Windows.Forms;
 
 namespace SymlinkSwapper.MVVM.ViewModel
@@ -64,13 +64,12 @@ namespace SymlinkSwapper.MVVM.ViewModel
 
         private int _delay;
 
-        [Range(300, int.MaxValue)]
         public int Delay
         {
             get => _delay;
             set
             {
-                _delay = value;
+                _delay = Math.Max(300, value);
                 _appSettings.Delay = _delay;
                 SaveSettings();
                 NotifyPropertyChanged();
@@ -84,21 +83,24 @@ namespace SymlinkSwapper.MVVM.ViewModel
             get => _autostart;
             set
             {
-                _autostart = value;
+                _autostart = AutostartHelper.SetAppAutostart(value);
                 _appSettings.Autostart = _autostart;
                 SaveSettings();
                 NotifyPropertyChanged();
             }
         }
 
-        private void SaveSettings() => Settings.Default.Save();
+        private void SaveSettings()
+        {
+            Settings.Default.Save();
+        }
 
         public SettingsViewModel()
         {
             _sourceFolder = _appSettings.SourceFolder;
             _targetSymlink = _appSettings.TargetSymlink;
             _delay = _appSettings.Delay;
-            _autostart = _appSettings.Autostart;
+            _autostart = AutostartHelper.RunsOnSystemStartup;
         }
     }
 }

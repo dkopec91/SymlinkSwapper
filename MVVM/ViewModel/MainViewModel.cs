@@ -60,6 +60,11 @@ namespace SymlinkSwapper.MVVM.ViewModel
             symlinkWorker = new();
             symlinkWorker.WorkerIssue += ReportWorkerIssue;
             ErrorMessageVM.RequestCloseErrorMessage += CloseErrorMessage;
+
+            if (SettingsVM.Autostart)
+            {
+                StartStopWorkerCommand.Execute(null);
+            }
         }
 
         private void ReportWorkerIssue(object sender, ErrorEventArgs e)

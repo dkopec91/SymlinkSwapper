@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:SymlinkSwapper"
              xmlns:viewModel="clr-namespace:SymlinkSwapper.MVVM.ViewModel"
              xmlns:view="clr-namespace:SymlinkSwapper.MVVM.View"
-             StartupUri="MainWindow.xaml">
+             StartupUri="MVVM/View/MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
