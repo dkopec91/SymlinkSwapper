@@ -4,11 +4,13 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.InteropServices;
 using System;
+using SymlinkSwapper.Logic;
 
 namespace SymlinkSwapper.Core
 {
     public class SymLinkWorker
     {
+        private static readonly int PRIVILEGE_NOT_HELD = 1314;
         private CancellationTokenSource tokenSource;
         private string sourcePath, outputFilePath;
         private int delay;
@@ -67,11 +69,10 @@ namespace SymlinkSwapper.Core
                 string[] sourceFiles = Directory.GetFiles(sourcePath)
                                                 .Where(filePath => filePath != outputFilePath)
                                                 .ToArray();
-
+                
                 if (sourceFiles.Length < 2)
                 {
-                    throw new ApplicationException("Could not find files to cycle through.\n\n"
-                        +"Select a directory containing at least two files.");
+                    throw new NoFilesException();
                 }
 
                 while (!tokenSource.IsCancellationRequested)
@@ -82,7 +83,14 @@ namespace SymlinkSwapper.Core
 
                     if (!symlinkCreated)
                     {
-                        throw new ApplicationException("Failed to create a Symbolic Link.");
+                        int lastError = Marshal.GetLastWin32Error();
+
+                        if (lastError == PRIVILEGE_NOT_HELD)
+                        {
+                            throw new PriviligeNotHeldException();
+                        }
+
+                        throw new FailedToCreateSymlinkException();
                     }
 
                     index = sourceFiles.Length == index + 1 ? 0 : ++index;
@@ -96,7 +104,8 @@ namespace SymlinkSwapper.Core
             }
         }
 
-        [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
+        [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.I1)]
         private static extern bool CreateSymbolicLink(
         string lpSymlinkFileName, string lpTargetFileName, SymbolicLink dwFlags);
 

@@ -1,4 +1,5 @@
 ﻿using SymlinkSwapper.Core;
+using SymlinkSwapper.Logic;
 using System;
 
 namespace SymlinkSwapper.MVVM.ViewModel
@@ -24,5 +25,30 @@ namespace SymlinkSwapper.MVVM.ViewModel
             }
         }
 
+        private string errorHeader;
+
+        public string ErrorHeader
+        {
+            get => errorHeader;
+            set
+            {
+                errorHeader = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public void SetException(Exception e)
+        {
+            if (e is KnownException)
+            {
+                KnownException knownException = e as KnownException;
+                ErrorHeader = knownException.ErrorHeader;
+                ErrorMessage = knownException.ErrorMessage;
+                return;
+            }
+
+            ErrorMessage = e.Message;
+            ErrorHeader = "Unexpected error";
+        }
     }
 }

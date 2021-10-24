@@ -15,7 +15,7 @@
 
         <Grid Margin="10 5">
             <Grid.RowDefinitions>
-                <RowDefinition Height="45"/>
+                <RowDefinition Height="30"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
@@ -24,25 +24,17 @@
                 <ColumnDefinition Width="30"/>
             </Grid.ColumnDefinitions>
 
-            <Border Grid.Row="0"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    Height="1"
-                    BorderThickness="1"
-                    BorderBrush="DarkGray"
-                    Margin="-10 40 -10 0"/>
-
             <Label Grid.Row="0"
                    Grid.Column="0"
                    Margin="0"
-                   FontSize="26"
+                   FontSize="20"
                    Foreground="Red"
-                   Content="Error"/>
+                   Content="{Binding ErrorHeader}"/>
 
             <Button Grid.Row="0"
                     Grid.Column="1"
-                    Margin="0 -3 0 0"
-                    FontSize="22"
+                    Margin="0 3 0 0"
+                    FontSize="14"
                     Foreground="Red"
                     Content="❌"
                     BorderThickness="0"

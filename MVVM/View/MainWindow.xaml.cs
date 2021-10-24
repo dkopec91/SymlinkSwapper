@@ -15,8 +15,6 @@ namespace SymlinkSwapper
 
         public MainWindow()
         {
-            
-
             InitializeComponent();
             this.MouseDown += Window_MouseDown;
 

@@ -70,7 +70,7 @@ namespace SymlinkSwapper.MVVM.ViewModel
         private void ReportWorkerIssue(object sender, ErrorEventArgs e)
         {
             WorkerRunning = false;
-            ErrorMessageVM.ErrorMessage = e.GetException().Message;
+            ErrorMessageVM.SetException(e.GetException());
             CurrentView = ErrorMessageVM;
         }
 
