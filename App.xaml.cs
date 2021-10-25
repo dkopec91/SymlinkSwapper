@@ -16,6 +16,7 @@ namespace SymlinkSwapper
             }
             else
             {
+                AutostartHelper.StartedOnSystemStartup = e.Args.Length == 1 && e.Args[0] == "/startup";
                 base.OnStartup(e);
             }
         }

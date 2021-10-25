@@ -26,6 +26,12 @@ namespace SymlinkSwapper
                 Icon = new Icon(Properties.Resources.AppIcon, new System.Drawing.Size(16, 16))
             };
             _notifyIcon.Click += new EventHandler(_notifyIcon_Click);
+
+            if (Logic.AutostartHelper.StartedOnSystemStartup)
+            {
+                Hide();
+                _notifyIcon.Visible = true;
+            }
         }
 
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)

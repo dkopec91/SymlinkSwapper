@@ -69,7 +69,7 @@ namespace SymlinkSwapper.Core
                 string[] sourceFiles = Directory.GetFiles(sourcePath)
                                                 .Where(filePath => filePath != outputFilePath)
                                                 .ToArray();
-                
+
                 if (sourceFiles.Length < 2)
                 {
                     throw new NoFilesException();

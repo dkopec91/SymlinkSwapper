@@ -8,12 +8,14 @@ namespace SymlinkSwapper.Logic
         private static readonly RegistryKey autostartRegistryKey =
             Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
 
-        private static readonly string executablePath = Application.ExecutablePath;
+        private static readonly string executablePath = $"{Application.ExecutablePath} /startup";
 
         private static readonly string registryKeyName = "SymlinkSwapper";
 
         public static bool RunsOnSystemStartup =>
             autostartRegistryKey.GetValue(registryKeyName) != null;
+
+        public static bool StartedOnSystemStartup { get; set; }
 
         public static bool SetAppAutostart(bool shouldStartWithSystem)
         {

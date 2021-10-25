@@ -61,7 +61,7 @@ namespace SymlinkSwapper.MVVM.ViewModel
             symlinkWorker.WorkerIssue += ReportWorkerIssue;
             ErrorMessageVM.RequestCloseErrorMessage += CloseErrorMessage;
 
-            if (SettingsVM.Autostart)
+            if (Logic.AutostartHelper.StartedOnSystemStartup)
             {
                 StartStopWorkerCommand.Execute(null);
             }
