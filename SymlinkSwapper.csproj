@@ -6,17 +6,22 @@
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
     <Authors>dkopec91</Authors>
-    <ApplicationIcon>AppIcon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\AppIcon.ico</ApplicationIcon>
     <Win32Resource />
     <Version>1.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove=".gitignore" />
+    <None Remove="Resources\AppIcon.ico" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="MVVM\Model\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\AppIcon.ico" />
   </ItemGroup>
 
   <ItemGroup>
